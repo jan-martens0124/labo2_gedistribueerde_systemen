@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RMITestClient.iml" filepath="$PROJECT_DIR$/RMITestClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TMITestServer.iml" filepath="$PROJECT_DIR$/TMITestServer.iml" />
     </modules>
   </component>
 </project>
