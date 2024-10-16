@@ -14,10 +14,14 @@ public class ChatServer extends UnicastRemoteObject implements ChatInterface {
     public synchronized void registerClient(ClientInterface client) throws RemoteException {
         this.clients.add(client);
         broadcastMessage(client.getUsername() + " has joined the chat!", "Server");
-        System.out.println("Current active users:");
-        for (ClientInterface c:clients) {
-            System.out.println(c.getUsername());
-        }
+        printActiveUsers();
+    }
+
+    @Override
+    public void deregisterClient(ClientInterface client) throws RemoteException {
+        this.clients.remove(client);
+        broadcastMessage(client.getUsername() + " has left the chat!", "Server");
+        printActiveUsers();
     }
 
     @Override
@@ -34,5 +38,12 @@ public class ChatServer extends UnicastRemoteObject implements ChatInterface {
             usernames.add(client.getUsername());
         }
         return usernames;
+    }
+
+    public void printActiveUsers() throws RemoteException {
+        System.out.println("Current active users:");
+        for (ClientInterface c:clients) {
+            System.out.println(c.getUsername());
+        }
     }
 }

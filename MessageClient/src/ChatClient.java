@@ -40,8 +40,10 @@ public class ChatClient extends UnicastRemoteObject implements ClientInterface {
             String message;
             while (true) {
                 message = scanner.nextLine();
+                if (message.equalsIgnoreCase("exit")) break;
                 client.sendMessage(message);
             }
+            chatServer.deregisterClient(client);
         } catch (Exception e) {
             e.printStackTrace();
         }
