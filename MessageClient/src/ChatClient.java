@@ -62,7 +62,9 @@ public class ChatClient extends UnicastRemoteObject implements ClientInterface {
                             // verschuiving om minder code te moeten herschrijven
                             messageParsed[0] = messageParsed[1];
                             messageParsed[1] = username;
-                            chatServer.createRoom(messageParsed);
+                            if(!chatServer.createRoom(messageParsed)){
+                                System.out.println("Room already exists. Choose another name.");
+                            }
                         } else {
                             System.out.println(
                                     "[Server] /room <naam ruimte> <naam deelnemer1> (<naam deelnemer 2> ...) ");

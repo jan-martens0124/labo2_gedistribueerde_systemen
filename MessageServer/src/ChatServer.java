@@ -96,6 +96,10 @@ public class ChatServer extends UnicastRemoteObject implements ChatInterface {
         try {
             // posities in payload zijn een deel verplaatsts tov het commando
             System.out.println("Creating room: " + payload[0]);
+            if(rooms.containsKey(payload[0])){
+                System.out.println("Room already exists");
+                return false;
+            }
             System.out.println("With members: ");
 
             for (ClientInterface client : publicRoom) {
